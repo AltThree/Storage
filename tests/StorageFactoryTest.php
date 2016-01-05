@@ -11,13 +11,6 @@
 
 namespace AltThree\Tests\Storage;
 
-use GrahamCampbell\Flysystem\FlysystemManager;
-use GrahamCampbell\TestBench\AbstractTestCase;
-use Illuminate\Contracts\Cache\Factory;
-use Illuminate\Contracts\Cache\Repository;
-use Illuminate\Contracts\Encryption\Encrypter;
-use League\Flysystem\FilesystemInterface;
-use Mockery;
 use AltThree\Storage\Compressors\CompressorInterface;
 use AltThree\Storage\StorageFactory;
 use AltThree\Storage\Stores\CachingStore;
@@ -26,6 +19,13 @@ use AltThree\Storage\Stores\EncryptingStore;
 use AltThree\Storage\Stores\FallbackStore;
 use AltThree\Storage\Stores\FlysystemStore;
 use AltThree\Storage\Stores\StoreInterface;
+use GrahamCampbell\Flysystem\FlysystemManager;
+use GrahamCampbell\TestBench\AbstractTestCase;
+use Illuminate\Contracts\Cache\Factory;
+use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Contracts\Encryption\Encrypter;
+use League\Flysystem\FilesystemInterface;
+use Mockery;
 
 /**
  * This is the storage factory test class.

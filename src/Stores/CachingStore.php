@@ -38,7 +38,7 @@ class CachingStore implements StoreInterface
      * Create a new caching store instance.
      *
      * @param \AltThree\Storage\Stores\StoreInterface $store
-     * @param \Illuminate\Contracts\Cache\Repository $cache
+     * @param \Illuminate\Contracts\Cache\Repository  $cache
      *
      * @return void
      */

@@ -11,11 +11,11 @@
 
 namespace AltThree\Tests\Storage\Stores;
 
-use GrahamCampbell\TestBench\AbstractTestCase;
-use Mockery;
 use AltThree\Storage\Compressors\CompressorInterface;
 use AltThree\Storage\Stores\CompressingStore;
 use AltThree\Storage\Stores\StoreInterface;
+use GrahamCampbell\TestBench\AbstractTestCase;
+use Mockery;
 
 /**
  * This is the compressing store test class.

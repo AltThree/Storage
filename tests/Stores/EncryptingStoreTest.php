@@ -11,11 +11,11 @@
 
 namespace AltThree\Tests\Storage\Stores;
 
+use AltThree\Storage\Stores\EncryptingStore;
+use AltThree\Storage\Stores\StoreInterface;
 use GrahamCampbell\TestBench\AbstractTestCase;
 use Illuminate\Encryption\Encrypter;
 use Mockery;
-use AltThree\Storage\Stores\EncryptingStore;
-use AltThree\Storage\Stores\StoreInterface;
 
 /**
  * This is the encrypting store test class.

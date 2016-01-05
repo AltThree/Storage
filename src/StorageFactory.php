@@ -11,16 +11,16 @@
 
 namespace AltThree\Storage;
 
-use GrahamCampbell\Flysystem\FlysystemManager;
-use Illuminate\Contracts\Cache\Factory;
-use Illuminate\Contracts\Encryption\Encrypter;
-use InvalidArgumentException;
 use AltThree\Storage\Compressors\CompressorInterface;
 use AltThree\Storage\Stores\CachingStore;
 use AltThree\Storage\Stores\CompressingStore;
 use AltThree\Storage\Stores\EncryptingStore;
 use AltThree\Storage\Stores\FallbackStore;
 use AltThree\Storage\Stores\FlysystemStore;
+use GrahamCampbell\Flysystem\FlysystemManager;
+use Illuminate\Contracts\Cache\Factory;
+use Illuminate\Contracts\Encryption\Encrypter;
+use InvalidArgumentException;
 
 /**
  * This is the storage factory class.
@@ -60,9 +60,9 @@ class StorageFactory
     /**
      * Create a new storage factory instance.
      *
-     * @param \Illuminate\Contracts\Cache\Factory              $cache
-     * @param \Illuminate\Contracts\Encryption\Encrypter       $encrypter
-     * @param \GrahamCampbell\Flysystem\FlysystemManager       $flysystem
+     * @param \Illuminate\Contracts\Cache\Factory               $cache
+     * @param \Illuminate\Contracts\Encryption\Encrypter        $encrypter
+     * @param \GrahamCampbell\Flysystem\FlysystemManager        $flysystem
      * @param \AltThree\Storage\Compressors\CompressorInterface $compressor
      *
      * @return void

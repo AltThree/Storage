@@ -36,7 +36,7 @@ class StorageManager extends AbstractManager
      * Create a new storage manager instance.
      *
      * @param \Illuminate\Contracts\Config\Repository $config
-     * @param \AltThree\Storage\StorageFactory         $factory
+     * @param \AltThree\Storage\StorageFactory        $factory
      *
      * @return void
      */

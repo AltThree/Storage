@@ -11,12 +11,12 @@
 
 namespace AltThree\Tests\Storage\Stores;
 
+use AltThree\Storage\Stores\CachingStore;
+use AltThree\Storage\Stores\StoreInterface;
 use GrahamCampbell\TestBench\AbstractTestCase;
 use Illuminate\Cache\Repository;
 use Illuminate\Contracts\Cache\Store;
 use Mockery;
-use AltThree\Storage\Stores\CachingStore;
-use AltThree\Storage\Stores\StoreInterface;
 
 /**
  * This is the caching store test class.

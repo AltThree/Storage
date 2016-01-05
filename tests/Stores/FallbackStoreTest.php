@@ -11,10 +11,10 @@
 
 namespace AltThree\Tests\Storage\Stores;
 
-use GrahamCampbell\TestBench\AbstractTestCase;
-use Mockery;
 use AltThree\Storage\Stores\FallbackStore;
 use AltThree\Storage\Stores\StoreInterface;
+use GrahamCampbell\TestBench\AbstractTestCase;
+use Mockery;
 
 /**
  * This is the fallback store test class.
