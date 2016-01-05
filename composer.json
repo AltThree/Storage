@@ -1,0 +1,52 @@
+{
+    "name": "alt-three/storage",
+    "description": "A Cached Secure Storage Provider",
+    "keywords": ["Storage", "Flysystem", "Alt Three"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Brooks",
+            "email": "james@alt-three.com"
+        },
+        {
+            "name": "Graham Campbell",
+            "email": "graham@alt-three.com"
+        },
+        {
+            "name": "Joseph Cohen",
+            "email": "joe@alt-three.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/contracts": "5.1.*|5.2.*",
+        "illuminate/support": "5.1.*|5.2.*",
+        "graham-campbell/flysystem": "^3.3",
+        "graham-campbell/manager": "^2.3"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "^3.1",
+        "mockery/mockery": "^0.9.4",
+        "phpunit/phpunit": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AltThree\\Storage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AltThree\\Tests\\Storage\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
