@@ -10,14 +10,14 @@ Either [PHP](https://php.net) 5.5+ or [HHVM](http://hhvm.com) 3.6+ are required.
 To get the latest version of Alt Three Storage, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
-$ composer require alt-three/storage --dev
+$ composer require alt-three/storage
 ```
 
-Instead, you may of course manually update your require-dev block and run `composer update` if you so choose:
+Instead, you may of course manually update your require block and run `composer update` if you so choose:
 
 ```json
 {
-    "require-dev": {
+    "require": {
         "alt-three/storage": "^1.0"
     }
 }
