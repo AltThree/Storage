@@ -37,7 +37,7 @@ class EncryptingStore implements StoreInterface
     /**
      * Create a new encrypting store instance.
      *
-     * @param \AltThree\Storage\Stores\StoreInterface     $store
+     * @param \AltThree\Storage\Stores\StoreInterface    $store
      * @param \Illuminate\Contracts\Encryption\Encrypter $encrypter
      *
      * @return void

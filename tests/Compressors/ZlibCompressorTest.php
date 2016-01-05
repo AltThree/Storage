@@ -11,8 +11,8 @@
 
 namespace AltThree\Tests\Storage\Compressors;
 
-use GrahamCampbell\TestBench\AbstractTestCase;
 use AltThree\Storage\Compressors\ZlibCompressor;
+use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
  * This is the zlib compressor test class.

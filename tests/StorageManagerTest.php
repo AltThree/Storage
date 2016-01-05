@@ -11,12 +11,12 @@
 
 namespace AltThree\Tests\Storage;
 
-use GrahamCampbell\TestBench\AbstractTestCase;
-use Illuminate\Contracts\Config\Repository;
-use Mockery;
 use AltThree\Storage\StorageFactory;
 use AltThree\Storage\StorageManager;
 use AltThree\Storage\Stores\StoreInterface;
+use GrahamCampbell\TestBench\AbstractTestCase;
+use Illuminate\Contracts\Config\Repository;
+use Mockery;
 
 /**
  * This is the storage manager test class.

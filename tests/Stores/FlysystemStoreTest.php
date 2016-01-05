@@ -11,11 +11,11 @@
 
 namespace AltThree\Tests\Storage\Stores;
 
+use AltThree\Storage\Stores\FlysystemStore;
 use GrahamCampbell\TestBench\AbstractTestCase;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\FilesystemInterface;
 use Mockery;
-use AltThree\Storage\Stores\FlysystemStore;
 
 /**
  * This is the flysystem store test class.

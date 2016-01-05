@@ -11,11 +11,11 @@
 
 namespace AltThree\Storage;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\ServiceProvider;
 use AltThree\Storage\Compressors\CompressorInterface;
 use AltThree\Storage\Compressors\ZlibCompressor;
 use AltThree\Storage\Stores\StoreInterface;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * This is the storage service provider class.

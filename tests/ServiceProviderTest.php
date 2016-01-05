@@ -11,15 +11,15 @@
 
 namespace AltThree\Tests\Storage;
 
-use GrahamCampbell\Flysystem\FlysystemServiceProvider;
-use GrahamCampbell\TestBench\AbstractPackageTestCase;
-use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 use AltThree\Storage\Compressors\CompressorInterface;
 use AltThree\Storage\Compressors\ZlibCompressor;
 use AltThree\Storage\StorageFactory;
 use AltThree\Storage\StorageManager;
 use AltThree\Storage\StorageServiceProvider;
 use AltThree\Storage\Stores\StoreInterface;
+use GrahamCampbell\Flysystem\FlysystemServiceProvider;
+use GrahamCampbell\TestBench\AbstractPackageTestCase;
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
  * This is the service provider test class.
