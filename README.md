@@ -23,6 +23,23 @@ Instead, you may of course manually update your require block and run `composer 
 }
 ```
 
+Once Alt Three Storage is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
+
+* `'AltThree\Storage\StorageServiceProvider'`
+
+
+## Configuration
+
+Alt Three Storage requires configuration.
+
+To get started, you'll need to publish all vendor assets:
+
+```bash
+$ php artisan vendor:publish
+```
+
+This will create a `config/login.php` file in your app that you can modify to set your configuration. Also, make sure you check for changes to the original config file in this package between releases.
+
 
 ## Security
 
