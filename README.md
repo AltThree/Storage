@@ -1,6 +1,6 @@
 # Alt Three Storage
 
-A cached secure storage provider.
+A cached secure storage provider for Laravel 5.
 
 
 ## Installation
