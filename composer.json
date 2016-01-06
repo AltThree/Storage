@@ -1,6 +1,6 @@
 {
     "name": "alt-three/storage",
-    "description": "A Cached Secure Storage Provider",
+    "description": "A Cached Secure Storage Provider For Laravel 5",
     "keywords": ["Storage", "Flysystem", "Alt Three"],
     "license": "MIT",
     "authors": [
