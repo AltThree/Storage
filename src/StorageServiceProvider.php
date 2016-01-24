@@ -14,8 +14,10 @@ namespace AltThree\Storage;
 use AltThree\Storage\Compressors\CompressorInterface;
 use AltThree\Storage\Compressors\ZlibCompressor;
 use AltThree\Storage\Stores\StoreInterface;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Lumen\Application as LumenApplication;
 
 /**
  * This is the storage service provider class.
@@ -43,8 +45,10 @@ class StorageServiceProvider extends ServiceProvider
     {
         $source = realpath(__DIR__.'/../config/storage.php');
 
-        if (class_exists('Illuminate\Foundation\Application', false)) {
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('storage.php')]);
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('storage');
         }
 
         $this->mergeConfigFrom($source, 'storage');
@@ -57,38 +61,34 @@ class StorageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerCompressor($this->app);
-        $this->registerFactory($this->app);
-        $this->registerManager($this->app);
-        $this->registerBindings($this->app);
+        $this->registerCompressor();
+        $this->registerFactory();
+        $this->registerManager();
+        $this->registerBindings();
     }
 
     /**
      * Register the compressor class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerCompressor(Application $app)
+    protected function registerCompressor()
     {
-        $app->singleton('storage.compressor', function () {
+        $this->app->singleton('storage.compressor', function () {
             return new ZlibCompressor();
         });
 
-        $app->alias('storage.compressor', CompressorInterface::class);
+        $this->app->alias('storage.compressor', CompressorInterface::class);
     }
 
     /**
      * Register the factory class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerFactory(Application $app)
+    protected function registerFactory()
     {
-        $app->singleton('storage.factory', function (Application $app) {
+        $this->app->singleton('storage.factory', function (Container $app) {
             $cache = $app['cache'];
             $encrypter = $app['encrypter'];
             $flysystem = $app['flysystem'];
@@ -97,44 +97,40 @@ class StorageServiceProvider extends ServiceProvider
             return new StorageFactory($cache, $encrypter, $flysystem, $compressor);
         });
 
-        $app->alias('storage.factory', StorageFactory::class);
+        $this->app->alias('storage.factory', StorageFactory::class);
     }
 
     /**
      * Register the manager class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerManager(Application $app)
+    protected function registerManager()
     {
-        $app->singleton('storage', function (Application $app) {
+        $this->app->singleton('storage', function (Container $app) {
             $config = $app['config'];
             $factory = $app['storage.factory'];
 
             return new StorageManager($config, $factory);
         });
 
-        $app->alias('storage', StorageManager::class);
+        $this->app->alias('storage', StorageManager::class);
     }
 
     /**
      * Register the bindings.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerBindings(Application $app)
+    protected function registerBindings()
     {
-        $app->bind('storage.connection', function (Application $app) {
+        $this->app->bind('storage.connection', function (Container $app) {
             $manager = $app['storage'];
 
             return $manager->connection();
         });
 
-        $app->alias('storage.connection', StoreInterface::class);
+        $this->app->alias('storage.connection', StoreInterface::class);
     }
 
     /**
@@ -146,9 +142,9 @@ class StorageServiceProvider extends ServiceProvider
     {
         return [
             'storage.compressor',
+            'storage.connection',
             'storage.factory',
             'storage',
-            'storage.connection',
         ];
     }
 }
