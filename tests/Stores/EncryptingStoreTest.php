@@ -24,6 +24,17 @@ use Mockery;
  */
 class EncryptingStoreTest extends AbstractTestCase
 {
+    public function testAll()
+    {
+        $store = Mockery::mock(StoreInterface::class);
+        $encrypter = Mockery::mock(Encrypter::class);
+        $encrypting = new EncryptingStore($store, $encrypter);
+
+        $store->shouldReceive('all')->andReturn(['123']);
+
+        $this->assertSame(['123'], $encrypting->all());
+    }
+
     public function testGetData()
     {
         $store = Mockery::mock(StoreInterface::class);

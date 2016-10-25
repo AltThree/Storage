@@ -47,6 +47,16 @@ class FallbackStore implements StoreInterface
     }
 
     /**
+     * Get all keys from storage.
+     *
+     * @return string[]
+     */
+    public function all()
+    {
+        return $this->main->all() + $this->fallback->all();
+    }
+
+    /**
      * Get an item from the storage.
      *
      * @param string $key

@@ -24,6 +24,17 @@ use Mockery;
  */
 class CompressingStoreTest extends AbstractTestCase
 {
+    public function testAll()
+    {
+        $store = Mockery::mock(StoreInterface::class);
+        $compressor = Mockery::mock(CompressorInterface::class);
+        $compressing = new CompressingStore($store, $compressor);
+
+        $store->shouldReceive('all')->andReturn(['123']);
+
+        $this->assertSame(['123'], $compressing->all());
+    }
+
     public function testGetData()
     {
         $store = Mockery::mock(StoreInterface::class);

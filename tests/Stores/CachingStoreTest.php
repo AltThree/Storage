@@ -25,6 +25,17 @@ use Mockery;
  */
 class CachingStoreTest extends AbstractTestCase
 {
+    public function testAll()
+    {
+        $store = Mockery::mock(StoreInterface::class);
+        $cache = Mockery::mock(Store::class);
+        $caching = new CachingStore($store, new Repository($cache));
+
+        $store->shouldReceive('all')->andReturn(['123']);
+
+        $this->assertSame(['123'], $caching->all());
+    }
+
     public function testGetMissingCache()
     {
         $store = Mockery::mock(StoreInterface::class);

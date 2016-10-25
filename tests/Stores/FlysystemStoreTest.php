@@ -24,6 +24,16 @@ use Mockery;
  */
 class FlysystemStoreTest extends AbstractTestCase
 {
+    public function testAll()
+    {
+        $flysystem = Mockery::mock(FilesystemInterface::class);
+        $store = new FlysystemStore($flysystem);
+
+        $flysystem->shouldReceive('listContents')->once()->andReturn([['path' => '123']]);
+
+        $this->assertSame(['123'], $store->all());
+    }
+
     public function testGetData()
     {
         $flysystem = Mockery::mock(FilesystemInterface::class);

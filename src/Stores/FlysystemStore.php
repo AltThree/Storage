@@ -41,6 +41,22 @@ class FlysystemStore implements StoreInterface
     }
 
     /**
+     * Get all keys from storage.
+     *
+     * @return string[]
+     */
+    public function all()
+    {
+        $keys = [];
+
+        foreach ($this->filesystem->listContents() as $file) {
+            $keys[] = $file['path'];
+        }
+
+        return $keys;
+    }
+
+    /**
      * Get an item from the storage.
      *
      * @param string $key
