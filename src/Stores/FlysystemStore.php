@@ -49,7 +49,7 @@ class FlysystemStore implements StoreInterface
     {
         $keys = [];
 
-        foreach ($this->filesystem->listContents() as $file) {
+        foreach ($this->flysystem->listContents() as $file) {
             $keys[] = $file['path'];
         }
 
