@@ -53,7 +53,7 @@ class FallbackStore implements StoreInterface
      */
     public function all()
     {
-        return $this->main->all() + $this->fallback->all();
+        return array_unique(array_merge($this->main->all(), $this->fallback->all()));
     }
 
     /**

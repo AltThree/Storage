@@ -35,6 +35,18 @@ class FallbackStoreTest extends AbstractTestCase
         $this->assertSame(['123', '456'], $store->all());
     }
 
+    public function testAllDupe()
+    {
+        $main = Mockery::mock(StoreInterface::class);
+        $fallback = Mockery::mock(StoreInterface::class);
+        $store = new FallbackStore($main, $fallback);
+
+        $main->shouldReceive('all')->once()->andReturn(['123']);
+        $fallback->shouldReceive('all')->once()->andReturn(['123', '456']);
+
+        $this->assertSame(['123', '456'], $store->all());
+    }
+
     public function testGetData()
     {
         $main = Mockery::mock(StoreInterface::class);
