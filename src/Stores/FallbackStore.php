@@ -47,6 +47,16 @@ class FallbackStore implements StoreInterface
     }
 
     /**
+     * Get all keys from storage.
+     *
+     * @return string[]
+     */
+    public function all()
+    {
+        return array_values(array_unique(array_merge($this->main->all(), $this->fallback->all())));
+    }
+
+    /**
      * Get an item from the storage.
      *
      * @param string $key

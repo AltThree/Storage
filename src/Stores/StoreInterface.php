@@ -19,6 +19,13 @@ namespace AltThree\Storage\Stores;
 interface StoreInterface
 {
     /**
+     * Get all keys from storage.
+     *
+     * @return string[]
+     */
+    public function all();
+
+    /**
      * Get an item from the storage.
      *
      * @param string $key
