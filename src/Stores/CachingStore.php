@@ -57,7 +57,7 @@ class CachingStore implements StoreInterface
      *
      * @return void
      */
-    public function __construct(StoreInterface $store, Repository $cache, int $ttl = null)
+    public function __construct(StoreInterface $store, Repository $cache, $ttl = null)
     {
         $this->store = $store;
         $this->cache = $cache;
