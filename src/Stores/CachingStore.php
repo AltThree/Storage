@@ -21,6 +21,13 @@ use Illuminate\Contracts\Cache\Repository;
 class CachingStore implements StoreInterface
 {
     /**
+     * The default cache ttl.
+     *
+     * @var int
+     */
+    const DEFAULT_TTL = 120;
+
+    /**
      * The underlying store instance.
      *
      * @var \AltThree\Storage\Stores\StoreInterface
@@ -35,17 +42,26 @@ class CachingStore implements StoreInterface
     protected $cache;
 
     /**
+     * The cache ttl.
+     *
+     * @var int
+     */
+    protected $ttl;
+
+    /**
      * Create a new caching store instance.
      *
      * @param \AltThree\Storage\Stores\StoreInterface $store
      * @param \Illuminate\Contracts\Cache\Repository  $cache
+     * @param int|null                                $ttl
      *
      * @return void
      */
-    public function __construct(StoreInterface $store, Repository $cache)
+    public function __construct(StoreInterface $store, Repository $cache, int $ttl = null)
     {
         $this->store = $store;
         $this->cache = $cache;
+        $this->ttl = $ttl ?: self::DEFAULT_TTL;
     }
 
     /**
@@ -67,7 +83,7 @@ class CachingStore implements StoreInterface
      */
     public function get($key)
     {
-        $data = $this->cache->remember("store.{$key}", 30, function () use ($key) {
+        $data = $this->cache->remember("store.{$key}", $this->ttl, function () use ($key) {
             return $this->store->get($key);
         });
 
@@ -86,7 +102,7 @@ class CachingStore implements StoreInterface
      */
     public function put($key, $data)
     {
-        $this->cache->put("store.{$key}", $data, 30);
+        $this->cache->put("store.{$key}", $data, $this->ttl);
         $this->store->put($key, $data);
     }
 
