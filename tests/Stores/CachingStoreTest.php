@@ -44,7 +44,20 @@ class CachingStoreTest extends AbstractTestCase
 
         $cache->shouldReceive('get')->once()->with('store.foo');
         $store->shouldReceive('get')->once()->with('foo')->andReturn('bar');
-        $cache->shouldReceive('put')->once()->with('store.foo', 'bar', 30);
+        $cache->shouldReceive('put')->once()->with('store.foo', 'bar', 120);
+
+        $this->assertSame('bar', $caching->get('foo'));
+    }
+
+    public function testGetMissingCacheCustomTtl()
+    {
+        $store = Mockery::mock(StoreInterface::class);
+        $cache = Mockery::mock(Store::class);
+        $caching = new CachingStore($store, new Repository($cache), 42);
+
+        $cache->shouldReceive('get')->once()->with('store.foo');
+        $store->shouldReceive('get')->once()->with('foo')->andReturn('bar');
+        $cache->shouldReceive('put')->once()->with('store.foo', 'bar', 42);
 
         $this->assertSame('bar', $caching->get('foo'));
     }
@@ -68,7 +81,20 @@ class CachingStoreTest extends AbstractTestCase
 
         $cache->shouldReceive('get')->once()->with('store.example');
         $store->shouldReceive('get')->once()->with('example');
-        $cache->shouldReceive('put')->once()->with('store.example', null, 30);
+        $cache->shouldReceive('put')->once()->with('store.example', null, 120);
+
+        $this->assertNull($caching->get('example'));
+    }
+
+    public function testGetEmptyCustomTtl()
+    {
+        $store = Mockery::mock(StoreInterface::class);
+        $cache = Mockery::mock(Store::class);
+        $caching = new CachingStore($store, new Repository($cache), 20);
+
+        $cache->shouldReceive('get')->once()->with('store.example');
+        $store->shouldReceive('get')->once()->with('example');
+        $cache->shouldReceive('put')->once()->with('store.example', null, 20);
 
         $this->assertNull($caching->get('example'));
     }
@@ -79,7 +105,19 @@ class CachingStoreTest extends AbstractTestCase
         $cache = Mockery::mock(Store::class);
         $caching = new CachingStore($store, new Repository($cache));
 
-        $cache->shouldReceive('put')->once()->with('store.name', 'stuff', 30);
+        $cache->shouldReceive('put')->once()->with('store.name', 'stuff', 120);
+        $store->shouldReceive('put')->once()->with('name', 'stuff');
+
+        $this->assertNull($caching->put('name', 'stuff'));
+    }
+
+    public function testPutCustomTtl()
+    {
+        $store = Mockery::mock(StoreInterface::class);
+        $cache = Mockery::mock(Store::class);
+        $caching = new CachingStore($store, new Repository($cache), 60);
+
+        $cache->shouldReceive('put')->once()->with('store.name', 'stuff', 60);
         $store->shouldReceive('put')->once()->with('name', 'stuff');
 
         $this->assertNull($caching->put('name', 'stuff'));
