@@ -84,7 +84,11 @@ class FlysystemStore implements StoreInterface
      */
     public function put($key, $data)
     {
-        $this->flysystem->put($key, $data);
+        if ($this->flysystem->getConfig()->get('disable_asserts', false)) {
+            $this->flysystem->write($key, $data);
+        } else {
+            $this->flysystem->put($key, $data);
+        }
     }
 
     /**
