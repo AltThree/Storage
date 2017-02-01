@@ -25,7 +25,7 @@ class CachingStore implements StoreInterface
      *
      * @var int
      */
-    const DEFAULT_TTL = 120;
+    const DEFAULT_TTL = 360;
 
     /**
      * The underlying store instance.
