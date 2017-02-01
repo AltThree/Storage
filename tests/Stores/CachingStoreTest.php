@@ -44,7 +44,7 @@ class CachingStoreTest extends AbstractTestCase
 
         $cache->shouldReceive('get')->once()->with('store.foo');
         $store->shouldReceive('get')->once()->with('foo')->andReturn('bar');
-        $cache->shouldReceive('put')->once()->with('store.foo', 'bar', 120);
+        $cache->shouldReceive('put')->once()->with('store.foo', 'bar', 360);
 
         $this->assertSame('bar', $caching->get('foo'));
     }
@@ -81,7 +81,7 @@ class CachingStoreTest extends AbstractTestCase
 
         $cache->shouldReceive('get')->once()->with('store.example');
         $store->shouldReceive('get')->once()->with('example');
-        $cache->shouldReceive('put')->once()->with('store.example', null, 120);
+        $cache->shouldReceive('put')->once()->with('store.example', null, 360);
 
         $this->assertNull($caching->get('example'));
     }
@@ -105,7 +105,7 @@ class CachingStoreTest extends AbstractTestCase
         $cache = Mockery::mock(Store::class);
         $caching = new CachingStore($store, new Repository($cache));
 
-        $cache->shouldReceive('put')->once()->with('store.name', 'stuff', 120);
+        $cache->shouldReceive('put')->once()->with('store.name', 'stuff', 360);
         $store->shouldReceive('put')->once()->with('name', 'stuff');
 
         $this->assertNull($caching->put('name', 'stuff'));
