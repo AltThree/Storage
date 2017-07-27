@@ -13,16 +13,6 @@ To get the latest version, simply require the project using [Composer](https://g
 $ composer require alt-three/storage
 ```
 
-Instead, you may of course manually update your require block and run `composer update` if you so choose:
-
-```json
-{
-    "require": {
-        "alt-three/storage": "^2.0"
-    }
-}
-```
-
 Once installed, you need to register the `AltThree\Storage\StorageServiceProvider` service provider in your `config/app.php`.
 
 
