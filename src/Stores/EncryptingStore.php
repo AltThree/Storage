@@ -65,7 +65,7 @@ class EncryptingStore implements StoreInterface
      *
      * @return string|null
      */
-    public function get($key)
+    public function get(string $key)
     {
         if ($data = $this->store->get($key)) {
             return $this->encrypter->decrypt($data);
@@ -80,7 +80,7 @@ class EncryptingStore implements StoreInterface
      *
      * @return void
      */
-    public function put($key, $data)
+    public function put(string $key, string $data)
     {
         $this->store->put($key, $this->encrypter->encrypt($data));
     }
@@ -92,7 +92,7 @@ class EncryptingStore implements StoreInterface
      *
      * @return void
      */
-    public function delete($key)
+    public function delete(string $key)
     {
         $this->store->delete($key);
     }

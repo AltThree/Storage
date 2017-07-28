@@ -65,7 +65,7 @@ class CompressingStore implements StoreInterface
      *
      * @return string|null
      */
-    public function get($key)
+    public function get(string $key)
     {
         if ($data = $this->store->get($key)) {
             return $this->compressor->uncompress($data);
@@ -80,7 +80,7 @@ class CompressingStore implements StoreInterface
      *
      * @return void
      */
-    public function put($key, $data)
+    public function put(string $key, string $data)
     {
         $this->store->put($key, $this->compressor->compress($data));
     }
@@ -92,7 +92,7 @@ class CompressingStore implements StoreInterface
      *
      * @return void
      */
-    public function delete($key)
+    public function delete(string $key)
     {
         $this->store->delete($key);
     }

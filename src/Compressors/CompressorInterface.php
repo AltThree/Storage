@@ -27,7 +27,7 @@ interface CompressorInterface
      *
      * @return string
      */
-    public function compress($data);
+    public function compress(string $data);
 
     /**
      * Uncompress a string.
@@ -38,5 +38,5 @@ interface CompressorInterface
      *
      * @return string
      */
-    public function uncompress($compressed);
+    public function uncompress(string $compressed);
 }

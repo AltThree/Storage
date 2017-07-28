@@ -34,7 +34,7 @@ class ZlibCompressor implements CompressorInterface
      *
      * @return void
      */
-    public function __construct($level = 6)
+    public function __construct(int $level = 6)
     {
         $this->level = $level;
     }
@@ -48,7 +48,7 @@ class ZlibCompressor implements CompressorInterface
      *
      * @return string
      */
-    public function compress($data)
+    public function compress(string $data)
     {
         if (is_string($compressed = @gzcompress($data, $this->level))) {
             return $compressed;
@@ -66,7 +66,7 @@ class ZlibCompressor implements CompressorInterface
      *
      * @return string
      */
-    public function uncompress($compressed)
+    public function uncompress(string $compressed)
     {
         if (is_string($data = @gzuncompress($compressed))) {
             return $data;

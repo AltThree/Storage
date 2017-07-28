@@ -63,7 +63,7 @@ class FlysystemStore implements StoreInterface
      *
      * @return string|null
      */
-    public function get($key)
+    public function get(string $key)
     {
         try {
             if ($data = $this->flysystem->read($key)) {
@@ -82,7 +82,7 @@ class FlysystemStore implements StoreInterface
      *
      * @return void
      */
-    public function put($key, $data)
+    public function put(string $key, string $data)
     {
         if (method_exists($this->flysystem, 'getConfig') && $this->flysystem->getConfig()->get('disable_asserts', false)) {
             $this->flysystem->write($key, $data);
@@ -98,7 +98,7 @@ class FlysystemStore implements StoreInterface
      *
      * @return void
      */
-    public function delete($key)
+    public function delete(string $key)
     {
         try {
             $this->flysystem->delete($key);

@@ -63,7 +63,7 @@ class FallbackStore implements StoreInterface
      *
      * @return string|null
      */
-    public function get($key)
+    public function get(string $key)
     {
         if ($data = $this->main->get($key)) {
             return $data;
@@ -80,7 +80,7 @@ class FallbackStore implements StoreInterface
      *
      * @return void
      */
-    public function put($key, $data)
+    public function put(string $key, string $data)
     {
         $this->main->put($key, $data);
     }
@@ -92,7 +92,7 @@ class FallbackStore implements StoreInterface
      *
      * @return void
      */
-    public function delete($key)
+    public function delete(string $key)
     {
         $this->main->delete($key);
         $this->fallback->delete($key);

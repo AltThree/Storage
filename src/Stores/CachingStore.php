@@ -57,7 +57,7 @@ class CachingStore implements StoreInterface
      *
      * @return void
      */
-    public function __construct(StoreInterface $store, Repository $cache, $ttl = null)
+    public function __construct(StoreInterface $store, Repository $cache, int $ttl = null)
     {
         $this->store = $store;
         $this->cache = $cache;
@@ -81,7 +81,7 @@ class CachingStore implements StoreInterface
      *
      * @return string|null
      */
-    public function get($key)
+    public function get(string $key)
     {
         $data = $this->cache->remember("store.{$key}", $this->ttl, function () use ($key) {
             return $this->store->get($key);
@@ -100,7 +100,7 @@ class CachingStore implements StoreInterface
      *
      * @return void
      */
-    public function put($key, $data)
+    public function put(string $key, string $data)
     {
         $this->cache->put("store.{$key}", $data, $this->ttl);
         $this->store->put($key, $data);
@@ -113,7 +113,7 @@ class CachingStore implements StoreInterface
      *
      * @return void
      */
-    public function delete($key)
+    public function delete(string $key)
     {
         $this->store->delete($key);
         $this->cache->forget("store.{$key}");

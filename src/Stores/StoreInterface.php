@@ -32,7 +32,7 @@ interface StoreInterface
      *
      * @return string|null
      */
-    public function get($key);
+    public function get(string $key);
 
     /**
      * Put an item into the storage.
@@ -42,7 +42,7 @@ interface StoreInterface
      *
      * @return void
      */
-    public function put($key, $data);
+    public function put(string $key, string $data);
 
     /**
      * Delete an item from the storage if it exists.
@@ -51,5 +51,5 @@ interface StoreInterface
      *
      * @return void
      */
-    public function delete($key);
+    public function delete(string $key);
 }
