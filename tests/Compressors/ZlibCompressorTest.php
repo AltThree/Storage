@@ -46,8 +46,7 @@ class ZlibCompressorTest extends AbstractTestCase
     }
 
     /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Failed to compress the data.
+     * @expectedException TypeError
      */
     public function testBadCompress()
     {
