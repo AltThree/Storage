@@ -46,6 +46,11 @@
     "extra": {
         "branch-alias": {
             "dev-master": "3.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "AltThree\\Storage\\StorageServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
