@@ -45,7 +45,7 @@ class StorageServiceProvider extends ServiceProvider
      */
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../config/storage.php');
+        $source = realpath($raw = __DIR__.'/../config/storage.php') ?: $raw;
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('storage.php')]);
